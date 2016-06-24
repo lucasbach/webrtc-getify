@@ -14,6 +14,10 @@ if (args.help || !args.file){
     process.exit(1);
 }
 
-var hello = require('./helloworld.js');
-var contents = hello.say(args.file);
-console.log(contents.toString());
+var hello = require('./helloworld2.js');
+hello.say(args.file).val(function (contents){
+    console.log(contents.toString());
+})
+.or(function(err){
+    console.error("Error: " + err);
+})
